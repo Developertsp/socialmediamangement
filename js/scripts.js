@@ -128,30 +128,45 @@ document.addEventListener('DOMContentLoaded', function() {
   
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+// inbox page 
+ // JavaScript code
+ const messageInput = document.getElementById('message-input');
+ const sendButton = document.getElementById('send-button');
+ const chatMessages = document.getElementById('chat-messages');
 
-  // Get all elements with class "chat-list" and attach click event listener
-  var chatListLinks = document.querySelectorAll('.chat-list a');
-  chatListLinks.forEach(function(link) {
-    link.addEventListener('click', function(event) {
-      event.preventDefault(); // Prevent default link behavior
-      var chatbox = document.querySelector('.chatbox');
-      if (chatbox) {
-        chatbox.classList.add('showbox'); // Add class to show chatbox
-      }
-    });
-  });
+ // Function to append a message to the chat
+ function appendMessage(sender, text) {
+     const messageDiv = document.createElement('div');
+     messageDiv.classList.add('message');
+     messageDiv.innerHTML = `
+        <!-- <span class="sender">${sender}:</span> -->
+         <span class="text">${text}</span>
+     `;
+     chatMessages.appendChild(messageDiv);
+     chatMessages.scrollTop = chatMessages.scrollHeight;
+ }
 
-  // Get element with class "chat-icon" and attach click event listener
-  var chatIcon = document.querySelector('.chat-icon');
-  if (chatIcon) {
-    chatIcon.addEventListener('click', function() {
-      var chatbox = document.querySelector('.chatbox');
-      if (chatbox) {
-        chatbox.classList.remove('showbox'); // Remove class to hide chatbox
-      }
-    });
-  }
+ // Dummy messages to initialize the chat
+ const dummyMessages = [
+     { sender: 'Bot', text: 'Welcome to the chat!' },
+     { sender: 'User', text: 'Hi there!' },
+     { sender: 'Bot', text: 'How can I help you?' },
+     { sender: 'Bot', text: 'Leave your message' },
+     { sender: 'Bot', text: 'Leave your message' }
+ ];
 
-});
+ // Add dummy messages to the chat on page load
+ window.addEventListener('load', () => {
+     dummyMessages.forEach(message => {
+         appendMessage(message.sender, message.text);
+     });
+ });
 
+ // Event listener for sending a message
+ sendButton.addEventListener('click', () => {
+     const messageText = messageInput.value.trim();
+     if (messageText !== '') {
+         appendMessage('You', messageText);
+         messageInput.value = '';
+     }
+ });
