@@ -11324,7 +11324,7 @@ td, #year {
 /* Inbox page */
 
 .chat-container {
-  max-width: 800px;
+  /* max-width: 800px; */
   margin: 20px auto;
   background-color: #f9f9f9;
   border-radius: 8px;
