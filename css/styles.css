@@ -11289,61 +11289,116 @@ body {
 
 /* planner page start  */
 
-.jumbotron {
-  background: #ffffff;
+.calendar {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-height: 500px; 
+  overflow-y: auto; 
 }
-
-.fa {
-  /* font-size: 0.2em; */
-}
-
-table {
-  width: 100%;
-}
-
-th {
+.calendar h2 {
   text-align: center;
-  border: 5px solid #ccc;
+  margin-bottom: 20px;
 }
-
-td {
-  width: 120px;
-  height: 100px;
+.weeks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   text-align: center;
-  line-height: 70px !important;
-  font-size: 1.2em;
+  border-bottom: 1px solid #ccc;
 }
-td.day:hover{
-  background: #ccc;
+.weeks li {
+  display: inline-block;
+  width: 30px;
+  margin: 0 5px;
+}
+.days {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+.days li {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin: 5px;
+  background: #f2f2f2;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.days li:hover::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  font-weight: bold;
+  color: green;
+}
+.days li.today {
+  background: #ffcccc;
+}
+.nav-arrows {
+  text-align: center;
+  margin-top: 10px;
+}
+.nav-arrows button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.nav-arrows button:hover {
+  background-color: #0056b3;
+}
+.nav-arrows button:focus {
+  outline: none;
+}
+/* Adjusting margins to separate the buttons */
+.nav-arrows button:first-child {
+  margin-right: 5px;
 }
 
-td, #year {
-  font-family: monospace;
-}
+/* calender end  */
+
 
 .panel-heading {
   background-color: #f5f5f5;
-  padding: 10px;
+  padding: 5px;
+  margin: 8px;
 }
-
 .panel-heading a {
   text-decoration: none;
   color: #333;
   display: flex;
   align-items: center;
+  padding-top: 5px;
 }
 
 .panel-heading a:hover {
   text-decoration: underline;
+  color: #007bff;
+}
+.panel-heading a {
+  display: flex;
+  justify-content: space-between; /* Align items with space between them */
+  align-items: center; /* Center items vertically */
 }
 
-.panel-heading a i {
-  margin-right: 10px;
+.panel-heading a .fa-chevron-down {
+  margin-left: 5px; 
+  color: #ffc107;
 }
 
-.panel-heading a input[type="checkbox"] {
-  margin-left: 10px;
-}
+
 .tab-content{
   height: 70vh;
   overflow: auto;
@@ -11351,15 +11406,66 @@ td, #year {
 }
 .panel-body p{
   cursor: pointer;
-  background-color: #f5f5f5;
+  background-color: #f5f5f6;
   padding: 10px;
   margin: 5px;
   margin-top: 8px;
   margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
+
+.panel-body p input[type="checkbox"] {
+  cursor: pointer;
+  margin-left: auto; /* Move the checkbox to the end of the line */
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  color: #333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.panel-body input[type="search"] {
+  padding: 8px 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  color: #333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel-body input[type="search"]::placeholder {
+  color: #999;
+}
+
+.panel-body input[type="search"]:focus {
+  border-color: #66afe9;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(102, 175, 233, 0.3);
+}
+
 
 /* planner page end  */
 
+
+/* start Analyzer page  */
+
+#analyzer{
+  /* box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px; */
+  border: none;
+}
+#analyzer .card{
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+
+
+
+
+/* End analyzer page */
 
 
 /* Inbox page */
