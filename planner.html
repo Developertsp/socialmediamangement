@@ -206,12 +206,11 @@
                                         <button class="border-0 border-radius-2 btn " data-bs-toggle="tooltip"
                                             data-bs-placement="top" title="Calendar"><i
                                                 class="fas fa-calendar"></i></button>
-                                        <button class="border-0 border-radius-2 btn" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" title="Instagram"><i
-                                                class="fa fa-instagram"></i></button>
+                                                <button class="border-0 border-radius-2 btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Feed View"><i class="fas fa-th-large"></i></button>
+                                                <button class="border-0 border-radius-2 btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Instagram"><i class="fab fa-instagram"></i></button>
                                         <button class="border-0 border-radius-2 btn" data-bs-toggle="tooltip"
                                             data-bs-placement="top" title="TikTok"><i
-                                                class="fas fa-tiktok"></i></button>
+                                                class="fab fa-tiktok"></i></button>
                                         <button class="border-0 border-radius-2 btn" data-bs-toggle="tooltip"
                                             data-bs-placement="top" title="refresh"><i
                                                 class="fas fa-refresh"></i></button>
@@ -221,38 +220,18 @@
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title text-center d-none">Calendar</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div id="main" class="container">
-                                            <div class="jumbotron">
-                                                <h1 class="text-center">
-                                                    <a id="left" href="#">
-                                                        <i class="fa fa-chevron-left"></i>
-                                                    </a>
-                                                    <span>&nbsp;</span>
-                                                    <span id="month"></span>
-                                                    <span>&nbsp;</span>
-                                                    <span id="year"></span>
-                                                    <span>&nbsp;</span>
-                                                    <a id="right" href="#">
-                                                        <i class="fa fa-chevron-right"></i>
-                                                    </a>
-                                                </h1>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xs-12">
-                                                    <table class="table">
-
-                                                        <tbody id="calendar-body">
-                                                            <!-- Calendar days will be dynamically generated here -->
-                                                        </tbody>
-                                                    </table>
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                            <div class="calendar">
+                                                <h2><span id="currentMonth">May</span> <span
+                                                        id="currentYear">2024</span></h2>
+                                                <div class="nav-arrows">
+                                                    <button id="prevMonth">&lt;</button>
+                                                    <button id="nextMonth">&gt;</button>
                                                 </div>
+                                                <ul class="weeks" id="weekDays"></ul>
+                                                <ul class="days" id="days"></ul>
                                             </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -271,11 +250,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 mt-5">
+                            <div class="col-md-4">
                                 <div class="container mt-5">
                                     <ul class="nav nav-tabs">
                                         <li class="nav-item">
-                                            <a class="nav-link active" data-toggle="tab" href="#general">General</a>
+                                            <a class="nav-link active" data-toggle="tab" href="#general">filters</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" data-toggle="tab" href="#payments">Payments</a>
@@ -289,160 +268,197 @@
                                         <div id="general" class="tab-pane fade show active">
                                             <section class="collapse-area">
                                                 <div class="container">
-                                                  <div class="row">
-                                                    <div class="collapse-tab col-xs-12">
-                                                      <div class="panel-group" id="accordion">
-                                                        <div class="panel panel-default" id="panel1">
-                                                          <!-- Start: Tab-1 -->
-                                                          <div class="panel-heading">
-                                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="">
-                                                                Status<i class="fas fa-chevron-down arrow"></i>
-                                                            </a>
-                                                          </div>
-                                                          
-                                                          <div id="collapseOne" class="panel-collapse collapse">
-                                                            <div class="panel-body">
-                                                              <div class="d-flex flex-column">
-                                                                <p class="d-flex align-items-center"><span class="mr-3">In Progress</span> <input type="checkbox" class="ml-auto"></p>
-                                                                <p class="d-flex align-items-center"><span class="mr-3">Scheduled</span> <input type="checkbox" class="ml-auto"></p>
-                                                                <p class="d-flex align-items-center"><span class="mr-3">Published</span> <input type="checkbox" class="ml-auto"></p>
-                                                                <p class="d-flex align-items-center"><span class="mr-3">Partially Failed</span> <input type="checkbox" class="ml-auto"></p>
-                                                                <p class="d-flex align-items-center"><span class="mr-3">Failed</span> <input type="checkbox" class="ml-auto"></p>
-                                                                <p class="d-flex align-items-center"><span class="mr-3">Rejected</span> <input type="checkbox" class="ml-auto"></p>
-                                                                <p class="d-flex align-items-center"><span class="mr-3">In Review</span> <input type="checkbox" class="ml-auto"></p>
-                                                                <p class="d-flex align-items-center"><span class="mr-3">Missed Review</span> <input type="checkbox" class="ml-auto"></p>
-                                                                <p class="d-flex align-items-center"><span class="mr-3">Draft</span> <input type="checkbox" class="ml-auto"></p>
-                                                              </div>
+                                                    <div class="row">
+                                                        <div class="collapse-tab col-xs-12">
+                                                            <div class="panel-group" id="accordion">
+                                                                <div class="panel panel-default" id="panel1">
+                                                                    <!-- Start: Tab-1 -->
+                                                                    <div class="panel-heading">
+                                                                        <a data-toggle="collapse"
+                                                                            data-parent="#accordion" href="#collapseOne"
+                                                                            class="">
+                                                                            Status<i
+                                                                                class="fas fa-chevron-down arrow"></i>
+                                                                        </a>
+                                                                    </div>
+
+                                                                    <div id="collapseOne"
+                                                                        class="panel-collapse collapse">
+                                                                        <div class="panel-body">
+                                                                            <div>
+                                                                                <p><span>In Progress</span> <input
+                                                                                        type="checkbox"></p>
+                                                                                <p><span>Scheduled</span> <input
+                                                                                        type="checkbox"></p>
+                                                                                <p><span>Published</span> <input
+                                                                                        type="checkbox"></p>
+                                                                                <p><span>Partially Failed</span> <input
+                                                                                        type="checkbox"></p>
+                                                                                <p><span>Failed</span> <input
+                                                                                        type="checkbox"></p>
+                                                                                <p><span>Rejected</span> <input
+                                                                                        type="checkbox"></p>
+                                                                                <p><span>In Review</span> <input
+                                                                                        type="checkbox"></p>
+                                                                                <p><span>Missed Review</span> <input
+                                                                                        type="checkbox"></p>
+                                                                                <p><span>Draft</span> <input
+                                                                                        type="checkbox"></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+
+                                                                </div>
+                                                                <div class="panel panel-default" id="panel2">
+                                                                    <!-- Start: Tab-2 -->
+                                                                    <div class="panel-heading">
+
+                                                                        <a data-toggle="collapse"
+                                                                            data-parent="#accordion" href="#collapseTwo"
+                                                                            class="">
+                                                                            Accounts<i
+                                                                                class="fas fa-chevron-down arrow"></i>
+                                                                        </a>
+
+                                                                    </div>
+                                                                    <div id="collapseTwo"
+                                                                        class="panel-collapse collapse">
+                                                                        <div class="panel-body">
+                                                                            <p>No Account</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="panel panel-default" id="panel3">
+                                                                    <!-- Start: Tab-3 -->
+                                                                    <div class="panel-heading">
+
+                                                                        <a data-toggle="collapse"
+                                                                            data-parent="#accordion"
+                                                                            href="#collapseThree" class="">
+                                                                            Assigned To
+                                                                            <i class="fas fa-chevron-down arrow"></i>
+                                                                        </a>
+
+                                                                    </div>
+                                                                    <div id="collapseThree"
+                                                                        class="panel-collapse collapse">
+                                                                        <div class="panel-body">
+                                                                            <p>user profile at</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="panel panel-default" id="panel4">
+                                                                    <!-- Start: Tab-4 -->
+                                                                    <div class="panel-heading">
+
+                                                                        <a data-toggle="collapse"
+                                                                            data-parent="#accordion"
+                                                                            href="#collapsefour" class="">
+                                                                            Created By
+                                                                            <i class="fas fa-chevron-down arrow"></i>
+                                                                        </a>
+
+                                                                    </div>
+                                                                    <div id="collapsefour"
+                                                                        class="panel-collapse collapse">
+                                                                        <div class="panel-body">
+                                                                            <p>user profile at specfic level</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="panel panel-default" id="panel5">
+                                                                    <!-- Start: Tab-5 -->
+                                                                    <div class="panel-heading">
+
+                                                                        <a data-toggle="collapse"
+                                                                            data-parent="#accordion"
+                                                                            href="#collapsefive" class="">
+                                                                            Content Type
+                                                                            <i class="fas fa-chevron-down arrow"></i>
+                                                                        </a>
+
+                                                                    </div>
+                                                                    <div id="collapsefive"
+                                                                        class="panel-collapse collapse">
+                                                                        <div class="panel-body">
+                                                                            <p>Repeat Posts</p>
+                                                                            <p>Article Automations Posts</p>
+                                                                            <p>Video Automations Posts</p>
+                                                                            <p>Evergreen Automations Posts</p>
+                                                                            <p>Rss Automations Posts</p>
+                                                                            <p>CSV Automations Posts</p>
+                                                                            <p>Queued Posts</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="panel panel-default" id="panel6">
+                                                                    <!-- Start: Tab-6 -->
+                                                                    <div class="panel-heading">
+
+                                                                        <a data-toggle="collapse"
+                                                                            data-parent="#accordion" href="#collapsesix"
+                                                                            class="">
+                                                                            Labels
+                                                                            <i class="fas fa-chevron-down arrow"></i>
+                                                                        </a>
+
+                                                                    </div>
+                                                                    <div id="collapsesix"
+                                                                        class="panel-collapse collapse">
+                                                                        <div class="panel-body">
+                                                                            <input type="search">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="panel panel-default" id="panel7">
+                                                                    <!-- Start: Tab-7 -->
+                                                                    <div class="panel-heading">
+
+                                                                        <a data-toggle="collapse"
+                                                                            data-parent="#accordion"
+                                                                            href="#collapseseven" class="">
+                                                                            Campaign Folder
+                                                                            <i class="fas fa-chevron-down arrow"></i>
+                                                                        </a>
+
+                                                                    </div>
+                                                                    <div id="collapseseven"
+                                                                        class="panel-collapse collapse">
+                                                                        <div class="panel-body">
+                                                                            <input type="search"
+                                                                                placeholder="search Campaign">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="panel panel-default" id="paneleight">
+                                                                    <!-- Start: Tab-8 -->
+                                                                    <div class="panel-heading">
+
+                                                                        <a data-toggle="collapse"
+                                                                            data-parent="#accordion"
+                                                                            href="#collapseeight" class="">
+                                                                            Content Categories
+                                                                            <i class="fas fa-chevron-down arrow"></i>
+                                                                        </a>
+
+                                                                    </div>
+                                                                    <div id="collapseeight"
+                                                                        class="panel-collapse collapse">
+                                                                        <div class="panel-body">
+                                                                            <input type="search"
+                                                                                placeholder="Content Categories">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
                                                             </div>
-                                                          </div>
-                                                          
-                                                          
-                                                          
                                                         </div>
-                                                        <div class="panel panel-default" id="panel2">
-                                                          <!-- Start: Tab-2 -->
-                                                          <div class="panel-heading">
-                                                            
-                                                              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="">
-                                                                Accounts<i class="fas fa-chevron-down arrow"></i>
-                                                              </a>
-                                                           
-                                                          </div>
-                                                          <div id="collapseTwo" class="panel-collapse collapse">
-                                                            <div class="panel-body">
-                                                                No Account
-                                                            </div>
-                                                          </div>
-                                                        </div>
-                                                        <div class="panel panel-default" id="panel3">
-                                                          <!-- Start: Tab-3 -->
-                                                          <div class="panel-heading">
-                                                            
-                                                              <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="">
-                                                                Assigned To
-                                                                <i class="fas fa-chevron-down arrow"></i>
-                                                              </a>
-                                                           
-                                                          </div>
-                                                          <div id="collapseThree" class="panel-collapse collapse">
-                                                            <div class="panel-body">
-                                                                <p>user profile at</p>
-                                                            </div>
-                                                          </div>
-                                                        </div>
-                                                        <div class="panel panel-default" id="panel4">
-                                                            <!-- Start: Tab-4 -->
-                                                            <div class="panel-heading">
-                                                              
-                                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapsefour" class="">
-                                                                    Created By
-                                                                  <i class="fas fa-chevron-down arrow"></i>
-                                                                </a>
-                                                             
-                                                            </div>
-                                                            <div id="collapsefour" class="panel-collapse collapse">
-                                                              <div class="panel-body">
-                                                                  <p>user profile at specfic level</p>
-                                                              </div>
-                                                            </div>
-                                                          </div>
-                                                          <div class="panel panel-default" id="panel5">
-                                                            <!-- Start: Tab-5 -->
-                                                            <div class="panel-heading">
-                                                              
-                                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapsefive" class="">
-                                                                    Content Type
-                                                                  <i class="fas fa-chevron-down arrow"></i>
-                                                                </a>
-                                                             
-                                                            </div>
-                                                            <div id="collapsefive" class="panel-collapse collapse">
-                                                              <div class="panel-body">
-                                                                  <p>Repeat Posts</p>
-                                                                  <p>Article Automations Posts</p>
-                                                                  <p>Video Automations Posts</p>
-                                                                  <p>Evergreen Automations Posts</p>
-                                                                  <p>Rss Automations Posts</p>
-                                                                  <p>CSV Automations Posts</p>
-                                                                  <p>Queued Posts</p>
-                                                              </div>
-                                                            </div>
-                                                          </div>
-                                                          <div class="panel panel-default" id="panel6">
-                                                            <!-- Start: Tab-6 -->
-                                                            <div class="panel-heading">
-                                                              
-                                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapsesix" class="">
-                                                                    Labels
-                                                                  <i class="fas fa-chevron-down arrow"></i>
-                                                                </a>
-                                                             
-                                                            </div>
-                                                            <div id="collapsesix" class="panel-collapse collapse">
-                                                              <div class="panel-body">
-                                                                  <input type="search">
-                                                              </div>
-                                                            </div>
-                                                          </div>
-                                                          <div class="panel panel-default" id="panel7">
-                                                            <!-- Start: Tab-7 -->
-                                                            <div class="panel-heading">
-                                                              
-                                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseseven" class="">
-                                                                    Campaign Folder
-                                                                  <i class="fas fa-chevron-down arrow"></i>
-                                                                </a>
-                                                             
-                                                            </div>
-                                                            <div id="collapseseven" class="panel-collapse collapse">
-                                                              <div class="panel-body">
-                                                                  <input type="search" placeholder="search Campaign">
-                                                              </div>
-                                                            </div>
-                                                          </div>
-                                                          <div class="panel panel-default" id="panel6">
-                                                            <!-- Start: Tab-8 -->
-                                                            <div class="panel-heading">
-                                                              
-                                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseeight" class="">
-                                                                    Content Categories
-                                                                  <i class="fas fa-chevron-down arrow"></i>
-                                                                </a>
-                                                             
-                                                            </div>
-                                                            <div id="collapseeight" class="panel-collapse collapse">
-                                                              <div class="panel-body">
-                                                                  <input type="search" placeholder="Content Categories">
-                                                              </div>
-                                                            </div>
-                                                          </div>
-                                                          
-                                                      </div>
                                                     </div>
-                                                  </div>
                                                 </div>
-                                              </section>
-                                              
+                                            </section>
+
                                         </div>
                                         <div id="payments" class="tab-pane fade">
                                             <h3>Payments FAQ</h3>

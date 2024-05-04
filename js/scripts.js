@@ -43,91 +43,88 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 // planner page
 // calendar 
 
-document.addEventListener('DOMContentLoaded', function() {
-  var currentDate = new Date();
-  
-  function generateCalendar(d) {
-    function monthDays(month, year) {
-      var result = [];
-      var days = new Date(year, month, 0).getDate();
-      for (var i = 1; i <= days; i++) {
-        result.push(i);
-      }
-      return result;
-    }
-    
-    Date.prototype.monthDays = function() {
-      var d = new Date(this.getFullYear(), this.getMonth() + 1, 0);
-      return d.getDate();
-    };
-    
-    var details = {
-      totalDays: d.monthDays(),
-      weekDays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-    };
-    
-    var start = new Date(d.getFullYear(), d.getMonth()).getDay();
-    var cal = '';
-    var day = 1;
-    
-    for (var i = 0; i < 7; i++) { // Assuming 6 rows for calendar
-      cal += '<tr>';
-      for (var j = 0; j < 7; j++) {
-        if (i === 0) {
-          cal += '<td>' + details.weekDays[j] + '</td>';
-        } else if (day > details.totalDays) {
-          cal += '<td>&nbsp;</td>';
-        } else {
-          if (i === 1 && j < start) {
-            cal += '<td>&nbsp;</td>';
-          } else {
-            cal += '<td class="day">' + day++ + '</td>';
-          }
-        }
-      }
-      cal += '</tr>';
-    }
-    
-    document.getElementById('calendar-body').innerHTML = cal;
-    document.getElementById('month').textContent = details.months[d.getMonth()];
-    document.getElementById('year').textContent = d.getFullYear();
-    
-    var dayCells = document.querySelectorAll('td.day');
-    
-    dayCells.forEach(function(cell) {
-      cell.addEventListener('mouseover', function() {
-        this.classList.add('hover');
-      });
-      
-      cell.addEventListener('mouseout', function() {
-        this.classList.remove('hover');
-      });
-    });
-  }
-  
-  document.getElementById('left').addEventListener('click', function() {
-    if (currentDate.getMonth() === 0) {
-      currentDate = new Date(currentDate.getFullYear() - 1, 11);
-    } else {
-      currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1);
-    }
-    generateCalendar(currentDate);
-  });
-  
-  document.getElementById('right').addEventListener('click', function() {
-    if (currentDate.getMonth() === 11) {
-      currentDate = new Date(currentDate.getFullYear() + 1, 0);
-    } else {
-      currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1);
-    }
-    generateCalendar(currentDate);
-  });
-  
-  generateCalendar(currentDate);
+document.addEventListener("DOMContentLoaded", function() {
+  const currentDate = new Date();
+  let currentYear = currentDate.getFullYear();
+  let currentMonth = currentDate.getMonth();
 
-  
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+
+  const weekDayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+  const daysContainer = document.getElementById('days');
+  const currentMonthSpan = document.getElementById('currentMonth');
+  const currentYearSpan = document.getElementById('currentYear');
+  const weekDaysContainer = document.getElementById('weekDays');
+
+  function renderCalendar() {
+    currentMonthSpan.textContent = monthNames[currentMonth];
+    currentYearSpan.textContent = currentYear;
+
+    // Clear previous days
+    daysContainer.innerHTML = '';
+
+    // Clear previous week day names
+    weekDaysContainer.innerHTML = '';
+
+    // Add week day names
+    weekDayNames.forEach(dayName => {
+      const dayListItem = document.createElement('li');
+      dayListItem.textContent = dayName;
+      weekDaysContainer.appendChild(dayListItem);
+    });
+
+    // Get the first day of the month
+    const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+
+    // Add empty cells for the days before the first day of the month
+    for (let i = 0; i < firstDayOfMonth; i++) {
+      const emptyCell = document.createElement('li');
+      daysContainer.appendChild(emptyCell);
+    }
+
+    // Get the number of days in the month
+    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+    // Add days of the month
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dayCell = document.createElement('li');
+      dayCell.textContent = day;
+      const dayOfWeek = new Date(currentYear, currentMonth, day).getDay();
+      dayCell.dataset.dayOfWeek = dayOfWeek; // Save day of week as data attribute
+      if (day === currentDate.getDate() && currentYear === currentDate.getFullYear() && currentMonth === currentDate.getMonth()) {
+        dayCell.classList.add('today');
+      }
+      daysContainer.appendChild(dayCell);
+    }
+  }
+
+  renderCalendar();
+
+  // Event listeners for changing month
+  document.getElementById('prevMonth').addEventListener('click', function() {
+    currentMonth--;
+    if (currentMonth === -1) {
+      currentMonth = 11;
+      currentYear--;
+    }
+    renderCalendar();
+  });
+
+  document.getElementById('nextMonth').addEventListener('click', function() {
+    currentMonth++;
+    if (currentMonth === 12) {
+      currentMonth = 0;
+      currentYear++;
+    }
+    renderCalendar();
+  });
 });
+
+// end calendar
+
 
 // start search filter 
 // Equivalent pure JavaScript code
@@ -161,12 +158,44 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
-
 // end planner page 
 
+// Analyzer page start 
+const searchInput = document.getElementById('searchInput');
+const filterButton = document.getElementById('filterButton');
+const emailsList = document.getElementById('emailsList');
+
+// Replace with your actual email data
+const emails = [
+  { sender: 'John Doe', subject: 'Meeting Reminder' },
+  { sender: 'Jane Smith', subject: 'Important Update' },
+  { sender: 'Support Team', subject: 'Your Ticket Resolved' },
+  { sender: 'Marketing', subject: 'New Promotion' },
+];
+
+function displayEmails(filteredEmails) {
+  emailsList.innerHTML = '';
+  filteredEmails.forEach(email => {
+    const listItem = document.createElement('li');
+    listItem.classList.add('list-group-item');
+    listItem.innerHTML = `<b>${email.sender}</b> - ${email.subject}`;
+    emailsList.appendChild(listItem);
+  });
+}
+
+displayEmails(emails); // Initially display all emails
+
+filterButton.addEventListener('click', () => {
+  const searchTerm = searchInput.value.toLowerCase();
+  const filteredEmails = emails.filter(email => 
+    email.sender.toLowerCase().includes(searchTerm) ||
+    email.subject.toLowerCase().includes(searchTerm)
+  );
+  displayEmails(filteredEmails);
+});
 
 
+// end Analyzer page 
 
 // inbox page 
  // JavaScript code
