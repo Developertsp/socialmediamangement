@@ -11287,7 +11287,7 @@ body {
 }
 
 
-/* planner page  */
+/* planner page start  */
 
 .jumbotron {
   background: #ffffff;
@@ -11320,6 +11320,47 @@ td.day:hover{
 td, #year {
   font-family: monospace;
 }
+
+.panel-heading {
+  background-color: #f5f5f5;
+  padding: 10px;
+}
+
+.panel-heading a {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.panel-heading a:hover {
+  text-decoration: underline;
+}
+
+.panel-heading a i {
+  margin-right: 10px;
+}
+
+.panel-heading a input[type="checkbox"] {
+  margin-left: 10px;
+}
+.tab-content{
+  height: 70vh;
+  overflow: auto;
+  scroll-behavior: smooth;
+}
+.panel-body p{
+  cursor: pointer;
+  background-color: #f5f5f5;
+  padding: 10px;
+  margin: 5px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+/* planner page end  */
+
+
 
 /* Inbox page */
 
