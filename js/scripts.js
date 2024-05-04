@@ -40,6 +40,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
 
+// planner page
 // calendar 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -127,6 +128,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
   
 });
+
+// start search filter 
+// Equivalent pure JavaScript code
+document.addEventListener('DOMContentLoaded', function() {
+  var panelCollapses = document.querySelectorAll('.panel-collapse');
+  panelCollapses.forEach(function(panelCollapse) {
+    panelCollapse.addEventListener('show.bs.collapse', function() {
+      panelCollapses.forEach(function(otherPanelCollapse) {
+        if (otherPanelCollapse !== panelCollapse) {
+          otherPanelCollapse.classList.remove('show');
+        }
+      });
+    });
+  });
+});
+
+// end search filter 
+
+// start at status when user click at p tag then checkbox work 
+document.addEventListener('DOMContentLoaded', function () {
+  const pTags = document.querySelectorAll('#collapseOne .panel-body p');
+
+  pTags.forEach(function (pTag) {
+    pTag.addEventListener('click', function () {
+      const checkbox = this.querySelector('input[type="checkbox"]');
+      checkbox.checked = !checkbox.checked;
+    });
+  });
+});
+
+
+
+
+
+
+// end planner page 
+
+
+
 
 // inbox page 
  // JavaScript code
