@@ -166,33 +166,34 @@ const filterButton = document.getElementById('filterButton');
 const emailsList = document.getElementById('emailsList');
 
 // Replace with your actual email data
-const emails = [
-  { sender: 'John Doe', subject: 'Meeting Reminder' },
-  { sender: 'Jane Smith', subject: 'Important Update' },
-  { sender: 'Support Team', subject: 'Your Ticket Resolved' },
-  { sender: 'Marketing', subject: 'New Promotion' },
-];
+// const emails = [
+//   { sender: 'John Doe', subject: 'Meeting Reminder' },
+//   { sender: 'Jane Smith', subject: 'Important Update' },
+//   { sender: 'Support Team', subject: 'Your Ticket Resolved' },
+//   { sender: 'Marketing', subject: 'New Promotion' },
+// ];
 
-function displayEmails(filteredEmails) {
-  emailsList.innerHTML = '';
-  filteredEmails.forEach(email => {
-    const listItem = document.createElement('li');
-    listItem.classList.add('list-group-item');
-    listItem.innerHTML = `<b>${email.sender}</b> - ${email.subject}`;
-    emailsList.appendChild(listItem);
-  });
-}
+// function displayEmails(filteredEmails) {
+//   emailsList.innerHTML = '';
+//   filteredEmails.forEach(email => {
+//     const listItem = document.createElement('li');
+//     listItem.classList.add('list-group-item');
+//     listItem.innerHTML = `<b>${email.sender}</b> - ${email.subject}`;
+//     emailsList.appendChild(listItem);
+//   });
+// }
 
-displayEmails(emails); // Initially display all emails
+// displayEmails(emails); // Initially display all emails
 
-filterButton.addEventListener('click', () => {
-  const searchTerm = searchInput.value.toLowerCase();
-  const filteredEmails = emails.filter(email => 
-    email.sender.toLowerCase().includes(searchTerm) ||
-    email.subject.toLowerCase().includes(searchTerm)
-  );
-  displayEmails(filteredEmails);
-});
+// filterButton.addEventListener('click', () => {
+//   const searchTerm = searchInput.value.toLowerCase();
+//   const filteredEmails = emails.filter(email => 
+//     email.sender.toLowerCase().includes(searchTerm) ||
+//     email.subject.toLowerCase().includes(searchTerm)
+//   );
+//   displayEmails(filteredEmails);
+// });
+
 
 
 // end Analyzer page 
@@ -239,3 +240,50 @@ filterButton.addEventListener('click', () => {
          messageInput.value = '';
      }
  });
+
+
+
+//  create post modal start
+
+// show toggle visibility for laptop and mobile view 
+document.addEventListener('DOMContentLoaded', function() {
+  const toggleButtons = document.querySelectorAll('.toggle-btn');
+  const postPreview = document.getElementById('post-preview');
+
+  toggleButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // Remove active class from all buttons
+      toggleButtons.forEach(btn => btn.classList.remove('active'));
+
+      // Add active class to clicked button
+      this.classList.add('active');
+
+      // Show/Hide post preview and adjust size based on data-preview-size
+      const targetId = this.dataset.previewTarget;
+      const targetElement = document.getElementById(targetId);
+      const previewSize = this.dataset.previewSize;
+
+      // Toggle visibility class
+      targetElement.classList.toggle('hidden');
+
+      // Remove previous preview size class and add new one
+      targetElement.classList.remove('preview-desktop', 'preview-mobile');
+      targetElement.classList.add(`preview-${previewSize}`);
+    });
+  });
+});
+
+
+// show schudle side popup 
+document.addEventListener('DOMContentLoaded', function () {
+  const scheduleCheckbox = document.getElementById('schedule');
+  const scheduleModal = new bootstrap.Modal(document.getElementById('scheduleModal'));
+
+  scheduleCheckbox.addEventListener('change', function () {
+      if (this.checked) {
+          scheduleModal.show();
+      } else {
+          scheduleModal.hide();
+      }
+  });
+});

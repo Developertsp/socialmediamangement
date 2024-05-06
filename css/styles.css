@@ -11243,6 +11243,7 @@ body {
 }
 
 /* techsolutionpro style start */
+/* media page start  */
 .Archived, .Uncategorized{
   display: flex;
   align-items: center;
@@ -11252,6 +11253,7 @@ body {
   border: 1px solid #ccc;
   padding: 10px;
 }
+/* media page end  */
 
 .share-container {
   display: flex;
@@ -11285,6 +11287,7 @@ body {
 .comment-text {
   flex: 1;
 }
+
 
 
 /* planner page start  */
@@ -11461,6 +11464,34 @@ body {
 #analyzer .card{
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
 }
+#analyticsoverview{
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+#analyticsoverview .tab-content{
+  height: 40vh;
+  overflow: auto;
+}
+
+
+#socialAnalytics .list-group-item,
+#competitorAnalytics .list-group-item {
+  background-color: #f8f9fa; /* Set background color */
+  border-color: #dee2e6; /* Set border color */
+  margin-bottom: 5px;
+}
+
+
+.list-group-item i {
+  margin-right: 0.5rem; /* Add margin to the right of icons */
+}
+
+.list-group-item .badge {
+  font-size: 0.8rem; /* Adjust font size of badges */
+}
+
+.list-group-item {
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
 
 
 
@@ -11555,3 +11586,15 @@ body {
   padding-top: 10px;
   text-align: center;
 }
+
+
+/* create post start  */
+#createpostsection{
+  height: 80vh;
+  overflow: auto;
+}
+
+.toggle-btn input[type="checkbox"] {
+  margin-right: 15px; /* Adjust the space between the checkbox and the text */
+}
+

@@ -102,7 +102,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-calendar"></i></div>
                                 Planner
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="./analyzer.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Analyzer
                             </a>
@@ -187,8 +187,7 @@
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as :</div>
-                        <p>TechSolutions</p>
+                        <div class="small">Logged in: <b>TechSolutions </b></div>
                     </div>
                 </nav>
             </div>
@@ -282,8 +281,7 @@
                                                                         </a>
                                                                     </div>
 
-                                                                    <div id="collapseOne"
-                                                                        class="panel-collapse collapse">
+                                                                    <div id="collapseOne" class="panel-collapse collapse">
                                                                         <div class="panel-body">
                                                                             <div>
                                                                                 <p><span>In Progress</span> <input
@@ -474,103 +472,241 @@
                             </div>
                         </div>
                     </div>
-                    <!-- creat post modal  -->
-                    <div class="modal mt-1 fade" id="socialPostModal" tabindex="-1"
-                        aria-labelledby="socialPostModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-fullscreen">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="postComposerModalLabel">New Post</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-lg-3">
-                                            <div class="">
-                                                <select class="form-select">
-                                                    <option value="">Select Content Category</option>
-                                                    <option value="text">Text</option>
-                                                    <option value="image">Image</option>
-                                                    <option value="video">Video</option>
-                                                </select>
-                                            </div>
-                                            <div class="alert alert-secondary mt-3 text-small" role="alert">
-                                                <p>No social account connected. Please connect an account to post. <a
-                                                        href="#" class="alert-link">Connect Account</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <div class="mb-3">
-                                                <textarea class="form-control" id="postContent" rows="5"
-                                                    placeholder="What's on your mind?"></textarea>
-                                            </div>
-                                            <div>
-                                                <button type="button" class="btn btn-primary m-2 toggle-btn"
-                                                    data-toggle="threadedTweet">Threaded Tweet</button>
-                                                <button type="button" class="btn btn-primary m-2 toggle-btn"
-                                                    data-toggle="facebookCarousel">Facebook Carousel</button>
-                                                <button type="button" class="btn btn-primary m-2 toggle-btn"
-                                                    data-toggle="youTube">YouTube</button>
-                                                <button type="button" class="btn btn-primary m-2 toggle-btn"
-                                                    data-toggle="linkedInCarousel">Linked In Carousel</button>
-                                                <button type="button" class="btn btn-primary m-2 mt-2 toggle-btn"
-                                                    data-toggle="firstComment">First Comment</button>
+                     <!-- create post modal  -->
+                     <div class="modal mt-1 fade" id="socialPostModal" tabindex="-1"
+                     aria-labelledby="socialPostModalLabel" aria-hidden="true">
+                     <div class="modal-dialog modal-fullscreen">
+                         <div class="modal-content">
+                             <div class="modal-header">
+                                 <h5 class="modal-title" id="postComposerModalLabel">New Post</h5>
+                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                     aria-label="Close"></button>
+                             </div>
+                             <div class="modal-body">
+                                 <div class="row">
+                                     <div class="col-lg-3">
+                                         <div class="">
+                                             <div class="accordion" id="faqAccordion">
+                                                 <div class="accordion-item">
+                                                     <h2 class="accordion-header" id="headingOne">
+                                                         <button class="accordion-button bg-light" type="button"
+                                                             data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                                             aria-expanded="true" aria-controls="collapseOne">
+                                                             Content Category
+                                                         </button>
+                                                     </h2>
+                                                     <div id="collapseOne" class="accordion-collapse collapse show"
+                                                         aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                                         <div class="accordion-body">
+                                                             <div class="input-group mb-3">
+                                                                 <input type="search" class="form-control"
+                                                                     placeholder="Search" aria-label="Search"
+                                                                     aria-describedby="searchIcon">
+                                                                 <button class="btn btn-outline-secondary"
+                                                                     type="button" id="searchIcon">
+                                                                     <i class="fas fa-search"></i>
+                                                                 </button>
+                                                             </div>
 
-                                            </div>
-                                            <div class="container">
-                                                <h2 class="mt-5 mb-4">Frequently Asked Questions</h2>
-                                                <div class="accordion" id="faqAccordion">
-                                                    <div class="accordion-item">
-                                                        <h2 class="accordion-header" id="headingOne">
-                                                            <button class="accordion-button" type="button"
-                                                                data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                                                aria-expanded="true" aria-controls="collapseOne">
-                                                                When to post
-                                                            </button>
-                                                        </h2>
-                                                        <div id="collapseOne" class="accordion-collapse collapse show"
-                                                            aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
-                                                            <div class="accordion-body">
-                                                                <div>
-                                                                    <input type="radio" name="radio"> Post Now <br>
-                                                                    <input type="radio" name="radio"> Schedule <br>
-                                                                    <input type="radio" name="radio"> Add to Queue <br>
-                                                                    <input type="radio" name="radio"> Add To Content
-                                                                    Category <br>
-                                                                    <input type="radio" name="radio"> Draft
-                                                                </div>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                                 <div class="accordion-item mt-2">
+                                                     <h2 class="accordion-header" id="headingTwo">
+                                                         <button class="accordion-button bg-light" type="button"
+                                                             data-bs-toggle="collapse" data-bs-target="#collapsetwo"
+                                                             aria-expanded="true" aria-controls="collapsetwo">
+                                                             <h6><i class="bi bi-facebook"></i> Facebook</h6>
+                                                         </button>
+                                                     </h2>
+                                                     <div id="collapsetwo" class="accordion-collapse collapse"
+                                                         aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                                         <div class="accordion-body">
+                                                             <div>
+                                                                 <p>account1</p>
+                                                                 <p>account2</p>
+                                                                 <p>account3</p>
 
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Repeat for other options -->
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                                 <div class="accordion-item mt-2">
+                                                     <h2 class="accordion-header" id="headingfour">
+                                                         <button class="accordion-button bg-light" type="button"
+                                                             data-bs-toggle="collapse" data-bs-target="#collapsefour"
+                                                             aria-expanded="true" aria-controls="collapsefour">
+                                                             <h6><i class="bi bi-instagram"></i> Instagram</h6>
+                                                         </button>
+                                                     </h2>
+                                                     <div id="collapsefour" class="accordion-collapse collapse"
+                                                         aria-labelledby="headingfour"
+                                                         data-bs-parent="#faqAccordion">
+                                                         <div class="accordion-body">
+                                                             <div>
+                                                                 <p>account1</p>
+                                                                 <p>account2</p>
+                                                                 <p>account3</p>
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 bg-light h-70vh">
-                                            <div class="d-flex justify-content-between">
-                                                <p>Post Preview</p>
-                                                <div>
-                                                    <button class="btn btn-light bg-light border-0"><i
-                                                            class="fas fa-laptop"></i></button>
-                                                    <button class="btn btn-dark  border-0"><i
-                                                            class="fas fa-mobile"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                                 <!-- Repeat for other options -->
+                                             </div>
 
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Schedule</button>
-                                    <button type="button" class="btn btn-primary">Post Now</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                         </div>
+                                         <div class="alert alert-secondary mt-3 text-small" role="alert">
+                                             <p>No social account connected. Please connect an account to post. <a
+                                                     href="#" class="alert-link">Connect Account</a></p>
+                                         </div>
+                                     </div>
+                                     <div class="col-lg-5" id="createpostsection">
+                                         <div class="mb-3">
+                                             <textarea class="form-control" id="postContent" rows="5"
+                                                 placeholder="What's on your mind?"></textarea>
+                                         </div>
+                                         <div>
+                                             <div class="d-flex align-items-center">
+                                                 <i class="fas fa-comment-alt"></i>
+                                                 <label for="postNow" class="ms-2 me-2">Threaded Tweet</label>
+                                                 <input type="checkbox" id="postNow" name="checkbox">
+                                             </div>
+
+                                             <div class="d-flex align-items-center">
+                                                 <i class="fab fa-facebook"></i>
+                                                 <label for="facebookCarousel" class="ms-2 me-2">Facebook
+                                                     Carousel</label>
+                                                 <input type="checkbox" id="facebookCarousel" name="checkbox">
+                                             </div>
+
+                                             <div class="d-flex align-items-center">
+                                                 <i class="fab fa-youtube"></i>
+                                                 <label for="youTube" class="ms-2 me-2">YouTube</label>
+                                                 <input type="checkbox" id="youTube" name="checkbox">
+                                             </div>
+
+                                             <div class="d-flex align-items-center">
+                                                 <i class="fab fa-linkedin"></i>
+                                                 <label for="linkedIn" class="ms-2 me-2">LinkedIn</label>
+                                                 <input type="checkbox" id="linkedIn" name="checkbox">
+                                             </div>
+
+                                             <div class="d-flex align-items-center">
+                                                 <i class="fas fa-comment"></i>
+                                                 <label for="firstComment" class="ms-2 me-2">First Comment</label>
+                                                 <input type="checkbox" id="firstComment" name="checkbox">
+                                             </div>
+                                         </div>
+
+
+                                         <!-- this button Group we can not use  -->
+                                         <div class="btn-group-toggle d-none" data-toggle="buttons">
+                                             <label class="m-2 toggle-btn active">
+                                                 <a href="#" class="ms-2 text-decoration-none"><i
+                                                         class="fas fa-comment-alt"></i> Threaded Tweet</a> <input
+                                                     type="checkbox" autocomplete="off">
+                                             </label>
+                                             <label class="m-2 toggle-btn">
+                                                 <a href="#" class="ms-2 text-decoration-none"><i
+                                                         class="fab fa-facebook"></i> Facebook Carousel</a> <input
+                                                     type="checkbox" autocomplete="off">
+                                             </label>
+                                             <label class="m-2 toggle-btn">
+                                                 <a href="#" class="ms-2 text-decoration-none"><i
+                                                         class="fab fa-youtube"></i> YouTube</a> <input
+                                                     type="checkbox" autocomplete="off">
+                                             </label>
+                                             <label class="m-2 toggle-btn">
+                                                 <a href="#" class="ms-2 text-decoration-none"><i
+                                                         class="fab fa-linkedin"></i> LinkedIn Carousel</a> <input
+                                                     type="checkbox" autocomplete="off">
+                                             </label>
+                                             <label class="m-2 mt-2 toggle-btn">
+                                                 <a href="#" class="ms-2 text-decoration-none"><i
+                                                         class="fas fa-comment"></i> First Comment</a> <input
+                                                     type="checkbox" autocomplete="off">
+                                             </label>
+                                         </div>
+
+                                         <div class="accordion mt-3" id="faqAccordion">
+
+                                             <div class="accordion-item">
+                                                 <h2 class="accordion-header" id="headingthree">
+                                                     <button class="accordion-button bg-light" type="button"
+                                                         data-bs-toggle="collapse" data-bs-target="#collapsethree"
+                                                         aria-expanded="true" aria-controls="collapsethree">
+                                                         Posting Schedule
+                                                     </button>
+                                                 </h2>
+                                                 <div id="collapsethree" class="accordion-collapse collapse "
+                                                     aria-labelledby="headingthree" data-bs-parent="#faqAccordion">
+                                                     <div class="accordion-body">
+                                                         <div>
+                                                             <input type="checkbox" id="postNow" name="checkbox">
+                                                             <label for="postNow">Post Now</label> <br>
+
+                                                             <input type="checkbox" id="schedule" name="checkbox">
+                                                             <label for="schedule">Schedule</label> <br>
+
+                                                             <input type="checkbox" id="addToQueue" name="checkbox">
+                                                             <label for="addToQueue">Add to Queue</label> <br>
+
+                                                             <input type="checkbox" id="addToContentCategory"
+                                                                 name="checkbox">
+                                                             <label for="addToContentCategory">Add To Content
+                                                                 Category</label> <br>
+
+                                                             <input type="checkbox" id="draft" name="checkbox">
+                                                             <label for="draft">Draft</label>
+                                                         </div>
+
+                                                     </div>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="col-lg-4 bg-light">
+                                         <div>
+                                             <div class="d-flex justify-content-between align-items-center">
+                                                 <p class="d-none"></p>Post Preview</p>
+                                                 <div class="toggle-container">
+                                                     <button class="toggle-btn active"
+                                                         data-preview-target="post-preview"
+                                                         data-preview-size="desktop">
+                                                         <i class="fas fa-laptop"></i> Desktop
+                                                     </button>
+                                                     <button class="toggle-btn" data-preview-target="post-preview"
+                                                         data-preview-size="mobile">
+                                                         <i class="fas fa-mobile"></i> Mobile
+                                                     </button>
+                                                 </div>
+                                             </div>
+                                             <div id="post-preview" class="post-preview">
+                                                 <div
+                                                     class="post-preview-content d-flex justify-content-center mt-5">
+                                                     <h2 class="d-none">Post Title</h2>
+                                                     <img src="https://via.placeholder.com/300x200"
+                                                         alt="Placeholder image for post preview"
+                                                         class="img-fluid mb-2">
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+
+
+
+
+                                 </div>
+                                 <div class="modal-footer">
+                                     <button type="button" class="btn btn-secondary"
+                                         data-bs-dismiss="modal">Schedule</button>
+                                     <button type="button" class="btn btn-primary">Post Now</button>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>  
 
                     <!-- blog post modal  -->
                     <div class="modal fade" id="blogPostModal" tabindex="-1" aria-labelledby="blogPostModalLabel"
