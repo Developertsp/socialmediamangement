@@ -329,7 +329,7 @@ class FacebookController extends Controller
 
                 // Add the response to the array
                 $facebookResponses[] = json_decode($response->getBody()->getContents(), true);
-            }
+            }   
         }
         // Create a new FacebookPost model instance
         $post = new FacebookPost();
