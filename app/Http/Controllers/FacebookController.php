@@ -196,8 +196,10 @@ class FacebookController extends Controller
                 'message' => $e->getMessage(),
             ], 500);
         }
-    }
+    }    
 
+
+    
 
     public function postFacebook(Request $request)
     {
