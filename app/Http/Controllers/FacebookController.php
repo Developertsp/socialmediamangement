@@ -199,7 +199,7 @@ class FacebookController extends Controller
     }    
 
 
-    
+
 
     public function postFacebook(Request $request)
     {
@@ -273,7 +273,7 @@ class FacebookController extends Controller
                     $imageUrl = asset('storage/' . $image['path']);
 
                     // $imageUrl = Storage::url($image['path']);
-                     dd($imageUrl);
+                     dd('imageUrl', $imageUrl);
 
 
                     // Make a POST request to the Facebook Graph API to post the image
